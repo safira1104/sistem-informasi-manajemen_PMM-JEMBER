@@ -1,8 +1,9 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { BellDot, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,31 +25,34 @@ export default function NavbarProfile({ role }: NavbarProfileProps) {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <BellDot className="h-5 w-5 cursor-pointer text-gray-600" />
-
+    <div className="flex items-center gap-2">
       {/* Jika belum login */}
       {!role && (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 transition">
-              Sign In
-              <ChevronDown className="h-4 w-4" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48 rounded-lg p-2">
-            <DropdownMenuItem
-              onClick={() => handleNavigate("/guest/sign-in")}
-            >
-              Sign in as Guest
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => handleNavigate("/admin/sign-in")}
-            >
-              Sign in as Admin
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <>
+          <button
+            onClick={() => handleNavigate("/guest/sign-up")}
+            className="flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 transition"
+          >
+            Sign Up
+          </button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-2 rounded-md border border-black px-4 py-2 text-sm text-black hover:bg-gray-200 transition">
+                Sign In
+                <ChevronDown className="h-4 w-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48 rounded-lg p-2">
+              <DropdownMenuItem onClick={() => handleNavigate("/guest/sign-in")}>
+                Sign in as Guest
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleNavigate("/admin/sign-in")}>
+                Sign in as Admin
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </>
       )}
 
       {/* Jika sudah login */}

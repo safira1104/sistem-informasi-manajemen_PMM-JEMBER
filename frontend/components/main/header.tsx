@@ -12,29 +12,26 @@ interface HeaderProps {
 
 export default function Header({ label, role }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 flex h-20 w-full items-center justify-between border-b bg-white px-6 py-3 shadow-sm">
+    <header className="sticky top-0 z-50 flex h-auto w-full items-center justify-between border-b bg-white px-6 py-1 shadow-sm">
       {/* Kiri: Logo & Judul */}
-      <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition">
+      <Link href="/" className="flex items-center gap-4">
         <Image
           src="/logo.png"
           alt="Logo Kebun Jubung"
-          width={60}
-          height={60}
+          width={50}
+          height={50}
           className="rounded-full object-cover"
         />
         <div>
-          <h1 className="text-lg font-bold text-green-800">
+          <h1 className="text-lg font-bold text-black">
             {label ?? "Kebun Jubung"}
           </h1>
-          <p className="text-xs text-gray-500">
-            Wisata Alam & Edukasi Berbasis Komunitas
-          </p>
         </div>
       </Link>
 
       {/* Tengah: Navigasi */}
       
-        <nav className="hidden md:flex gap-12 text-sm font-medium text-gray-700">
+        <nav className="hidden md:flex gap-12 text-sm font-medium text-black">
         {mainNavigation.map((item) => (
             <Link
             key={item.label}
