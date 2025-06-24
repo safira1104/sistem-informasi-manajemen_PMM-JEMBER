@@ -57,7 +57,7 @@ const WelcomeSection = () => {
           src={slides[index].image}
           alt={`Welcome ${index + 1}`}
           fill
-          className="object-cover"
+          className="object-fit"
         />
       </motion.div>
 

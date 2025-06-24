@@ -70,9 +70,9 @@ const ThumbnailSliderCard: React.FC<ThumbnailSliderCardProps> = ({
           <Image
             src={slides[slideIndex].image}
             alt={`Slide ${slideIndex + 1}`}
-            width={100}
-            height={120}
-            className="object-cover w-[150px] h-[180px] hover:scale-105 transition-transform duration-300"
+            width={150}
+            height={180}
+            className="object-fit w-[150px] h-[180px] hover:scale-105 transition-transform duration-300 drop-shadow-xl"
           />
         </button>
       ))}
