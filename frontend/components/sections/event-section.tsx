@@ -29,21 +29,28 @@ const events = [
   },
   {
     id: 4,
-    name: "Kuliner Malam Kebun Jubung",
+    name: "Pesta Durian Kebun Jubung",
     image: "https://picsum.photos/400/250?random=4",
-    startDate: "2025-07-01T17:00:00",
-    endDate: "2025-07-01T22:00:00",
+    startDate: "2025-07-03T10:00:00",
+    endDate: "2025-07-03T16:00:00",
+  },
+  {
+    id: 5,
+    name: "Camping Ceria",
+    image: "https://picsum.photos/400/250?random=5",
+    startDate: "2025-07-05T17:00:00",
+    endDate: "2025-07-06T09:00:00",
   },
 ];
 
 export default function EventSection() {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 = next, -1 = prev
+  const [direction, setDirection] = useState(0);
 
-  const visibleEvents = events.slice(index, index + 2);
+  const visibleEvents = events.slice(index, index + 3);
 
   const nextSlide = () => {
-    if (index + 2 < events.length) {
+    if (index + 3 < events.length) {
       setDirection(1);
       setIndex(index + 1);
     }
@@ -58,10 +65,11 @@ export default function EventSection() {
 
   return (
     <section className="w-full px-4 md:px-10 py-10">
-      <div className="flex justify-center">
-        <div className="max-w-6xl mx-auto">
+      <div className="flex justify-center space-y-5">
+        {/* Ganti max-w-6xl dengan max-w-4xl agar selebar image */}
+        <div className="w-full max-w-4xl mx-auto">
           <div className="mb-4">
-            <h2 className="text-2xl font-bold">Whats on Kebun Jubung</h2>
+            <h2 className="text-2xl  mb-4 font-bold">Whats on Kebun Jubung</h2>
             <p className="text-gray-600">
               Looking for fun and inspiration this week? Explore the latest
               happenings and activities at Kebun Jubung!
@@ -70,23 +78,23 @@ export default function EventSection() {
 
           <EventSliderControls onPrev={prevSlide} onNext={nextSlide} />
 
-          {/* Animasi geser dua card */}
           <div className="overflow-hidden">
             <motion.div
-              key={index} // trigger re-render & animation
-              className="flex space-x-4"
+              key={index}
+              className="flex gap-4"
               initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
               {visibleEvents.map((event) => (
-                <EventCard
-                  key={event.id}
-                  name={event.name}
-                  image={event.image}
-                  startDate={event.startDate}
-                  endDate={event.endDate}
-                />
+                <div key={event.id} className="flex-1 basis-1/3">
+                  <EventCard
+                    name={event.name}
+                    image={event.image}
+                    startDate={event.startDate}
+                    endDate={event.endDate}
+                  />
+                </div>
               ))}
             </motion.div>
           </div>

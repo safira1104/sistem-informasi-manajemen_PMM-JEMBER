@@ -52,17 +52,16 @@ export default function EventCard({
   endDate,
 }: EventCardProps) {
   return (
-    <div className="w-[355px] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+    <div className="w-[280px] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
       <div className="relative px-3 pt-3">
         <Image
           src={image}
           alt={name}
-          width={320}
-          height={180}
+          width={250} // atau 100% pakai layout="responsive"
+          height={160}
           className="rounded-lg object-cover mx-auto"
         />
         <Countdown targetDate={endDate} />
-        
       </div>
       <div className="px-5 pb-4 pt-3 text-sm">
         <p className="text-black font-medium text-xs">
