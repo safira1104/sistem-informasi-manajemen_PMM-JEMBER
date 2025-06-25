@@ -14,7 +14,7 @@ const AboutUsSection = () => {
         </p>
 
         {/* Placeholder untuk video: pakai gambar landscape */}
-        <div className="relative w-full max-w-3xl mx-auto aspect-video rounded-xl overflow-hidden shadow-lg">
+        <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-xl overflow-hidden shadow-lg">
           <Image
             src={Landscape}
             alt="Video Placeholder"

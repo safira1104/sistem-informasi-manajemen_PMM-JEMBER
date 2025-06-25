@@ -1,6 +1,8 @@
 import AboutUsSection from "@/components/sections/about-us-section";
 import EventSection from "@/components/sections/event-section";
 import TopDestinationSection from "@/components/sections/top-destination-section";
+import TravelMapSection from "@/components/sections/travel-map-section";
+import VirtualTourSection from "@/components/sections/virtual-tour-section";
 import WelcomeSection from "@/components/sections/welcome-section";
 
 export default function Home() {
@@ -9,6 +11,8 @@ export default function Home() {
       <WelcomeSection />
       <AboutUsSection />
       <EventSection />
+      <TravelMapSection />
+      <VirtualTourSection />
       <TopDestinationSection />
     </main>
   );
