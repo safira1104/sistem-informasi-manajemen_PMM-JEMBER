@@ -67,7 +67,7 @@ const TopDestinationSection = () => {
             
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center text-white p-6">
-            <h3 className="text-xl font-bold mb-2 text-center">{topDestinations[0].name}</h3>
+            <h3 className="text-xl font-bold mb-2 text-center hover:underline transition">{topDestinations[0].name}</h3>
             <p className="text-sm text-center mb-4">
                 Kebun Jubung adalah destinasi alam di Jember yang menawarkan keindahan hutan, udara segar, dan suasana asri untuk liburan keluarga maupun healing alami.
             </p>
@@ -109,7 +109,7 @@ const TopDestinationSection = () => {
 
                 {/* Teks di bawah gambar */}
                 <div className="mt-2">
-                    <h4 className="text-xs font-semibold">{dest.name}</h4>
+                    <h4 className="text-xs font-semibold group-hover:underline transition ">{dest.name}</h4>
                     <div className="flex items-center text-[10px] text-gray-500">
                     <MapPin className="w-3 h-3 mr-1" />
                     {dest.location}

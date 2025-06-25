@@ -22,6 +22,7 @@ const ThumbnailSliderCard: React.FC<ThumbnailSliderCardProps> = ({
 }) => {
   const maxVisible = 3;
   const [visibleStartIndex, setVisibleStartIndex] = useState(0);
+  const [slidingOutIndex, setSlidingOutIndex] = useState<number | null>(null);
 
   const [thumbnailOrder, setThumbnailOrder] = useState<number[]>(
     slides.map((_, i) => i).filter((i) => i !== activeIndex)
@@ -36,11 +37,15 @@ const ThumbnailSliderCard: React.FC<ThumbnailSliderCardProps> = ({
 
   useEffect(() => {
     if (visibleStartIndex > thumbnailOrder.length - maxVisible) {
-      setVisibleStartIndex(Math.max(0, thumbnailOrder.length - maxVisible));
+      setVisibleStartIndex(
+        Math.max(0, thumbnailOrder.length - maxVisible)
+      );
     }
   }, [thumbnailOrder, visibleStartIndex]);
 
   const handleClick = (clickedIndex: number) => {
+    // Trigger animasi sebelum ganti slide
+    setSlidingOutIndex(clickedIndex);
     onSelect(clickedIndex);
 
     const posInOrder = thumbnailOrder.findIndex((i) => i === clickedIndex);
@@ -61,21 +66,28 @@ const ThumbnailSliderCard: React.FC<ThumbnailSliderCardProps> = ({
 
   return (
     <div className="absolute bottom-24 right-10 z-30 flex gap-4 overflow-hidden">
-      {visibleIndexes.map((slideIndex) => (
-        <button
-          key={slideIndex}
-          onClick={() => handleClick(slideIndex)}
-          className="overflow-hidden rounded-lg shadow-lg border-2 border-transparent hover:border-white transition-all duration-300"
-        >
-          <Image
-            src={slides[slideIndex].image}
-            alt={`Slide ${slideIndex + 1}`}
-            width={150}
-            height={180}
-            className="object-fit w-[150px] h-[180px] hover:scale-105 transition-transform duration-300 drop-shadow-xl"
-          />
-        </button>
-      ))}
+      {visibleIndexes.map((slideIndex) => {
+        const isSlidingOut =
+          slidingOutIndex !== null && slideIndex < slidingOutIndex;
+
+        return (
+          <button
+            key={slideIndex}
+            onClick={() => handleClick(slideIndex)}
+            className={`overflow-hidden rounded-lg shadow-lg border-2 border-transparent hover:border-white transition-all duration-300 ${
+              isSlidingOut ? "animate-slide-left" : ""
+            }`}
+          >
+            <Image
+              src={slides[slideIndex].image}
+              alt={`Slide ${slideIndex + 1}`}
+              width={150}
+              height={180}
+              className="object-cover w-[150px] h-[180px] hover:scale-105 transition-transform duration-300 drop-shadow-xl"
+            />
+          </button>
+        );
+      })}
     </div>
   );
 };
