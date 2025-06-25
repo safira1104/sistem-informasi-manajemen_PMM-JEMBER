@@ -133,6 +133,15 @@ module.exports = {
           border: "#ffff",
           ring: "hsl(var(--sidebar-ring))",
         },
+        keyframes: {
+          'slide-left': {
+            '0%': { transform: 'translateX(0)', opacity: 1 },
+            '100%': { transform: 'translateX(-100%)', opacity: 0 },
+          },
+        },
+        animation: {
+          'slide-left': 'slide-left 0.5s ease forwards',
+        },
       },
       backgroundImage: {
         "shape-1": "url(@/assets/svg/shape-1.svg)",
