@@ -1,45 +1,80 @@
 import React from "react";
-import Image from "next/image";
-import Garden2 from "@/assets/images/garden-2.png";
 import SignUpFormGuest from "@/features/auth/components/sign-up-form-guest";
 
 const SignUpPage = () => {
   return (
-    <div className="flex  w-full flex-col items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-200 md:flex-row font-poppins pt-7 pb-5">
-      {/* Gambar kiri dalam card */}
-      <div className="hidden md:flex flex-1 items-center justify-center p-8">
-        <div className="max-w-[500px] w-full">
-          <Image
-            src={Garden2}
-            alt="Ilustrasi Belajar"
-            className="w-full h-auto rounded-xl object-contain"
-            priority
-          />
+    <div className="w-screen h-screen bg-[#C7F6C7] font-poppins flex items-center justify-center">
+      <div className="w-full max-w-xl bg-white rounded-2xl shadow-md p-8">
+        <div className="text-center mb-6">
+          <h3 className="text-3xl font-extrabold text-[#378308] md:text-[36px] leading-tight">
+            Kebun Jubung System
+          </h3>
+          <p className="text-md text-green-700 mt-1">Buat Akun Sebagai Tamu</p>
         </div>
-      </div>
 
-      {/* Form registrasi dalam card */}
-      <div className="flex flex-1 items-center justify-center px-4 md:px-[80px]">
-        <div className="w-full max-w-xl rounded-2xl bg-white p-8 shadow-lg">
-          <div className="text-center mb-6">
-            <h3 className="text-3xl font-extrabold text-[#378308] md:text-[36px] leading-tight">
-              Kebun Jubung System
-            </h3>
-            <p className="text-lg text-gray-700 mt-2">Buat Akun Sebagai Tamu</p>
+        {/* Form Register (Nama, Email, Password, Verifikasi) */}
+        <form className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Nama
+            </label>
+            <input
+              type="text"
+              placeholder="Nama"
+              className="w-full border border-green-500 rounded px-4 py-2 outline-none focus:ring-2 focus:ring-green-300"
+            />
           </div>
 
-          <SignUpFormGuest />
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full border border-green-500 rounded px-4 py-2 outline-none focus:ring-2 focus:ring-green-300"
+            />
+          </div>
 
-          <p className="text-center text-sm text-gray-600 mt-6">
-            Sudah memiliki akun?{" "}
-            <a
-              href="/guest/sign-in"
-              className="text-[#378308] font-medium underline"
-            >
-              Login
-            </a>
-          </p>
-        </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full border border-green-500 rounded px-4 py-2 outline-none focus:ring-2 focus:ring-green-300"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Verifikasi Password
+            </label>
+            <input
+              type="password"
+              placeholder="Verifikasi Password"
+              className="w-full border border-green-500 rounded px-4 py-2 outline-none focus:ring-2 focus:ring-green-300"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded"
+          >
+            Daftar Sebagai Guest
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Sudah memiliki akun?{" "}
+          <a
+            href="/guest/sign-in"
+            className="text-[#378308] font-medium underline"
+          >
+            Login
+          </a>
+        </p>
       </div>
     </div>
   );
